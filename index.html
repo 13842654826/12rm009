@@ -45,7 +45,7 @@
             const resultDom = document.getElementById('jsonResult');
             resultDom.innerHTML = '加载中...';
             
-            fetch('./data.json')
+            fetch('https://13842654826.github.io/12rm009/data.json')
                 .then(response => {
                     if (!response.ok) throw new Error('文件不存在或加载失败');
                     return response.json(); // 自动解析 JSON
@@ -164,3 +164,4 @@
 </body>
 
 </html>
+
