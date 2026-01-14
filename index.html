@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外部数据文件加载演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei", sans-serif;
+        }
+        body {
+            padding: 30px;
+            background-color: #f5f7fa;
+        }
+        .btn-group {
+            margin-bottom: 30px;
+        }
+        button {
+            padding: 12px 24px;
+            margin-right: 15px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2f54eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #1d39c4;
+        }
+        .result-container {
+            margin-bottom: 40px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        h3 {
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-size: 18px;
+            border-left: 4px solid #2f54eb;
+            padding-left: 12px;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 16px;
+            border-radius: 6px;
+            line-height: 1.8;
+            font-size: 14px;
+            overflow-x: auto;
+            color: #374151;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #e5e7eb;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #f9fafb;
+            color: #1f2937;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .error {
+            color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="btn-group">
+        <button onclick="loadJsonFile()">加载 JSON 文件</button>
+        <button onclick="loadXmlFile()">加载 XML 文件</button>
+        <button onclick="loadTxtFile()">加载 TXT 文件</button>
+        <button onclick="loadCsvFile()">加载 CSV 文件</button>
+    </div>
+
+    <!-- JSON 结果展示区 -->
+    <div class="result-container">
+        <h3>JSON 数据展示</h3>
+        <pre id="jsonResult">点击上方按钮加载数据...</pre>
+    </div>
+
+    <!-- XML 结果展示区 -->
+    <div class="result-container">
+        <h3>XML 数据展示</h3>
+        <pre id="xmlResult">点击上方按钮加载数据...</pre>
+    </div>
+
+    <!-- TXT 结果展示区 -->
+    <div class="result-container">
+        <h3>TXT 文本展示</h3>
+        <pre id="txtResult">点击上方按钮加载数据...</pre>
+    </div>
+
+    <!-- CSV 结果展示区 -->
+    <div class="result-container">
+        <h3>CSV 表格展示</h3>
+        <div id="csvResult">点击上方按钮加载数据...</div>
+    </div>
+
+    <script>
+        // 1. 加载 JSON 文件（前后端交互首选）
+        function loadJsonFile() {
+            const resultDom = document.getElementById('jsonResult');
+            resultDom.innerHTML = '加载中...';
+            
+            fetch('./data.json')
+                .then(response => {
+                    if (!response.ok) throw new Error('文件不存在或加载失败');
+                    return response.json(); // 自动解析 JSON
+                })
+                .then(data => {
+                    // 格式化 JSON 字符串，便于阅读
+                    resultDom.innerHTML = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    resultDom.innerHTML = `<span class="error">加载失败：${error.message}</span>`;
+                });
+        }
+
+        // 2. 加载 XML 文件（早期数据格式）
+        function loadXmlFile() {
+            const resultDom = document.getElementById('xmlResult');
+            resultDom.innerHTML = '加载中...';
+            
+            fetch('./data.xml')
+                .then(response => {
+                    if (!response.ok) throw new Error('文件不存在或加载失败');
+                    return response.text(); // 先读取为文本
+                })
+                .then(xmlText => {
+                    // 解析 XML 字符串为 XML 对象
+                    const parser = new DOMParser();
+                    const xmlDoc = parser.parseFromString(xmlText, 'text/xml');
+                    
+                    // 提取 XML 中的数据
+                    let result = '';
+                    result += `标题：${xmlDoc.querySelector('title').textContent}\n`;
+                    result += `描述：${xmlDoc.querySelector('desc').textContent}\n\n`;
+                    
+                    const users = xmlDoc.querySelectorAll('user');
+                    users.forEach((user, index) => {
+                        result += `用户 ${index + 1}：\n`;
+                        result += `  姓名：${user.querySelector('name').textContent}\n`;
+                        result += `  年龄：${user.querySelector('age').textContent}\n`;
+                        result += `  城市：${user.querySelector('city').textContent}\n\n`;
+                    });
+                    
+                    resultDom.innerHTML = result;
+                })
+                .catch(error => {
+                    resultDom.innerHTML = `<span class="error">加载失败：${error.message}</span>`;
+                });
+        }
+
+        // 3. 加载 TXT 文件（纯文本格式）
+        function loadTxtFile() {
+            const resultDom = document.getElementById('txtResult');
+            resultDom.innerHTML = '加载中...';
+            
+            fetch('./data.txt')
+                .then(response => {
+                    if (!response.ok) throw new Error('文件不存在或加载失败');
+                    return response.text(); // 直接读取纯文本
+                })
+                .then(text => {
+                    resultDom.innerHTML = text; // 保留原始格式展示
+                })
+                .catch(error => {
+                    resultDom.innerHTML = `<span class="error">加载失败：${error.message}</span>`;
+                });
+        }
+
+        // 4. 加载 CSV 文件（表格数据格式）
+        function loadCsvFile() {
+            const resultDom = document.getElementById('csvResult');
+            resultDom.innerHTML = '加载中...';
+            
+            fetch('./data.csv')
+                .then(response => {
+                    if (!response.ok) throw new Error('文件不存在或加载失败');
+                    return response.text(); // 读取为文本
+                })
+                .then(csvText => {
+                    // 处理 CSV 文本（去除 Markdown 表格格式，转为标准 CSV）
+                    const cleanCsv = csvText
+                        .replace(/^csv\n/, '') // 去掉第一行的 "csv" 标识
+                        .replace(/\|/g, '')    // 去掉所有 | 符号
+                        .replace(/---+/g, '')  // 去掉分隔行（---）
+                        .trim();               // 去除首尾空白
+                    
+                    // 解析 CSV 为表格
+                    const rows = cleanCsv.split('\n').filter(row => row.trim());
+                    if (rows.length === 0) throw new Error('CSV 数据为空');
+                    
+                    // 生成 HTML 表格
+                    let tableHtml = '<table><thead><tr>';
+                    // 解析表头
+                    const headers = rows[0].split(',').map(header => header.trim());
+                    headers.forEach(header => {
+                        tableHtml += `<<th>${header}</</th>`;
+                    });
+                    tableHtml += '</tr></thead><tbody>';
+                    
+                    // 解析表格内容
+                    for (let i = 1; i < rows.length; i++) {
+                        const cells = rows[i].split(',').map(cell => cell.trim());
+                        tableHtml += '<tr>';
+                        cells.forEach(cell => {
+                            tableHtml += `<td>${cell}</td>`;
+                        });
+                        tableHtml += '</tr>';
+                    }
+                    tableHtml += '</tbody></table>';
+                    
+                    resultDom.innerHTML = tableHtml;
+                })
+                .catch(error => {
+                    resultDom.innerHTML = `<span class="error">加载失败：${error.message}</span>`;
+                });
+        }
+    </script>
+</body>
+</html>

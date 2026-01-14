@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <title>用户信息列表(XML格式)</title>
+  <desc>早期数据交换格式，结构严谨</desc>
+  <user>
+    <name>赵六</name>
+    <age>30</age>
+    <city>深圳</city>
+  </user>
+  <user>
+    <name>钱七</name>
+    <age>26</age>
+    <city>杭州</city>
+  </user>
+</root>
