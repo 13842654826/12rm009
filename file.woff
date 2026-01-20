@@ -1,0 +1,8 @@
+WOFF FONT FILE - WEB OPEN FONT FORMAT
+This is a placeholder for a WOFF font file.
+WOFF is a web font format with compression and metadata.
+Based on OpenType/TrueType with additional compression.
+Signature (hex): 77 4F 46 46 (wOFF in ASCII)
+Compression: zlib deflate
+Metadata includes vendor, license, credits information.
+Real WOFF files are compressed binary fonts for web use.

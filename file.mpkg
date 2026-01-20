@@ -1,0 +1,26 @@
+Apple Installer Package (.mpkg)
+This is a placeholder for an Apple installer metapackage.
+
+Metapackages contain multiple .pkg files and installation scripts.
+Used for complex software installations on macOS.
+
+STRUCTURE:
+- Distribution file (distribution.dist)
+- Resources folder
+- Nested .pkg files
+- Installation scripts (preinstall, postinstall)
+
+EXAMPLE CONTENT:
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <title>示例软件包</title>
+    <options customize="never" require-scripts="false"/>
+    <domains enable_anywhere="true"/>
+    <choices-outline>
+        <line choice="default"/>
+    </choices-outline>
+    <choice id="default" title="基础安装"/>
+    <pkg-ref id="com.example.package"/>
+</installer-gui-script>
+
+To create real .mpkg: Use PackageMaker or productbuild on macOS.

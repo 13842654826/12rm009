@@ -1,0 +1,7 @@
+TRUETYPE FONT FILE (.TTF)
+This is a placeholder for a TrueType font file.
+TrueType fonts use quadratic Bézier curves and hinting instructions.
+Common format for screen and print with good rendering quality.
+Signature (binary): true
+Tables include: glyf, loca, maxp, cvt, fpgm, prep, etc.
+Actual TTF files contain binary outline data and hinting information.

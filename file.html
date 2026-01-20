@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML示例文件</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', system-ui; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
+        header { background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); color: white; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; text-align: center; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .subtitle { font-size: 1.2rem; opacity: 0.9; }
+        main { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        section { margin-bottom: 2rem; }
+        h2 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 0.5rem; margin-bottom: 1rem; }
+        .card { background: #f1f8ff; border-left: 4px solid #3498db; padding: 1rem; margin: 1rem 0; border-radius: 0 5px 5px 0; }
+        code { background: #f4f4f4; padding: 0.2rem 0.4rem; border-radius: 3px; font-family: 'Consolas', monospace; }
+        footer { text-align: center; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #ddd; color: #666; }
+        .btn { display: inline-block; background: #3498db; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); background: #2980b9; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML示例文件</h1>
+        <div class="subtitle">一个完整的HTML5文档示例</div>
+    </header>
+    
+    <main>
+        <section>
+            <h2>简介</h2>
+            <p>这是一个标准的HTML5文件示例，展示了现代网页的基本结构。</p>
+            <div class="card">
+                <p>文件包含：语义化标签、CSS样式、响应式布局和基本交互。</p>
+            </div>
+        </section>
+        
+        <section>
+            <h2>HTML5特性</h2>
+            <ul>
+                <li><strong>语义化标签</strong>: <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;footer&gt;</code></li>
+                <li><strong>响应式设计</strong>: 使用viewport meta标签和相对单位</li>
+                <li><strong>CSS3样式</strong>: 渐变、阴影、圆角、动画</li>
+                <li><strong>可访问性</strong>: 良好的结构层次和颜色对比</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>代码示例</h2>
+            <pre><code>&lt;!-- HTML结构示例 --&gt;
+&lt;div class="container"&gt;
+    &lt;h1&gt;标题&lt;/h1&gt;
+    &lt;p&gt;段落内容&lt;/p&gt;
+    &lt;button onclick="alert('点击事件')"&gt;
+        点击我
+    &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+            
+            <a href="javascript:void(0)" class="btn" onclick="showMessage()">交互演示</a>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2024 HTML示例文件 | 最后更新: <span id="date"></span></p>
+    </footer>
+
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString('zh-CN');
+        
+        function showMessage() {
+            alert('按钮被点击了！这是一个JavaScript交互示例。');
+        }
+        
+        console.log('HTML文件加载完成');
+    </script>
+</body>
+</html>

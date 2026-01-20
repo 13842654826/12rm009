@@ -1,0 +1,7 @@
+OPENTYPE FONT FILE (.OTF)
+This is a placeholder for an OpenType font file.
+OpenType fonts use .otf extension and support PostScript outlines.
+Supports advanced typographic features and cross-platform compatibility.
+Signature (binary): OTTO or true
+Table directory includes: cmap, head, hhea, hmtx, name, OS/2, post, etc.
+Real OTF files contain binary font data with PostScript outlines.

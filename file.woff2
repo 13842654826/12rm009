@@ -1,0 +1,8 @@
+WOFF2 FONT FILE - WEB OPEN FONT FORMAT 2.0
+This is a placeholder for a WOFF2 font file.
+WOFF2 provides better compression than WOFF (average 30% smaller).
+Uses Brotli compression algorithm.
+Signature (hex): 77 4F 46 32 (wOF2 in ASCII)
+Supports variable fonts and color fonts.
+Advanced features: transformed tables, shared dictionaries.
+Actual WOFF2 files are highly compressed binary web fonts.

@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!-- XUL (XML User Interface Language) Example -->
+<!-- Used for Mozilla application interfaces -->
+
+<window id="main-window"
+        title="XUL应用程序示例"
+        xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        width="600"
+        height="400"
+        persist="screenX screenY width height"
+        onload="onWindowLoad();">
+
+    <script type="application/javascript"><![CDATA[
+        function onWindowLoad() {
+            console.log("窗口加载完成");
+            updateStatus();
+        }
+        
+        function updateStatus() {
+            var status = document.getElementById('status-text');
+            var time = new Date().toLocaleTimeString();
+            status.value = "当前状态: 运行中 | 时间: " + time;
+        }
+        
+        function showMessage() {
+            var name = document.getElementById('name-input').value;
+            alert("你好, " + (name || "用户") + "!");
+            updateStatus();
+        }
+        
+        function toggleSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            if (section.collapsed) {
+                section.collapsed = false;
+            } else {
+                section.collapsed = true;
+            }
+        }
+    ]]></script>
+
+    <menubar id="main-menubar">
+        <menu id="file-menu" label="文件">
+            <menupopup>
+                <menuitem label="新建" oncommand="alert('新建文件');"/>
+                <menuitem label="打开" oncommand="alert('打开文件');"/>
+                <menuseparator/>
+                <menuitem label="退出" oncommand="window.close();"/>
+            </menupopup>
+        </menu>
+        <menu id="edit-menu" label="编辑">
+            <menupopup>
+                <menuitem label="复制"/>
+                <menuitem label="粘贴"/>
+            </menupopup>
+        </menu>
+        <menu id="help-menu" label="帮助">
+            <menupopup>
+                <menuitem label="关于" oncommand="alert('XUL示例 v1.0');"/>
+            </menupopup>
+        </menu>
+    </menubar>
+
+    <vbox flex="1">
+        <!-- 工具栏 -->
+        <toolbar id="main-toolbar">
+            <toolbarbutton label="刷新" oncommand="updateStatus();"/>
+            <toolbarbutton label="消息" oncommand="showMessage();"/>
+            <toolbarseparator/>
+            <toolbarbutton label="显示/隐藏面板" oncommand="toggleSection('info-panel');"/>
+        </toolbar>
+
+        <hbox flex="1">
+            <!-- 左侧导航 -->
+            <vbox width="150" style="border-right: 1px solid #ccc;">
+                <label value="导航面板" style="font-weight: bold; padding: 5px;"/>
+                <tree id="nav-tree" flex="1" seltype="single">
+                    <treecols>
+                        <treecol id="nav-col" label="项目" flex="1"/>
+                    </treecols>
+                    <treechildren>
+                        <treeitem>
+                            <treerow>
+                                <treecell label="主页"/>
+                            </treerow>
+                        </treeitem>
+                        <treeitem>
+                            <treerow>
+                                <treecell label="设置"/>
+                            </treerow>
+                        </treeitem>
+                        <treeitem>
+                            <treerow>
+                                <treecell label="关于"/>
+                            </treerow>
+                        </treeitem>
+                    </treechildren>
+                </tree>
+            </vbox>
+
+            <!-- 主内容区 -->
+            <vbox flex="1" style="padding: 10px;">
+                <label value="XUL界面示例" style="font-size: 18pt; font-weight: bold; margin-bottom: 10px;"/>
+                
+                <groupbox id="info-panel">
+                    <caption label="用户信息"/>
+                    <grid>
+                        <columns>
+                            <column/>
+                            <column flex="1"/>
+                        </columns>
+                        <rows>
+                            <row>
+                                <label value="姓名:" control="name-input"/>
+                                <textbox id="name-input" value="示例用户"/>
+                            </row>
+                            <row>
+                                <label value="选项:"/>
+                                <hbox>
+                                    <radiogroup id="options-group">
+                                        <radio label="选项1" selected="true"/>
+                                        <radio label="选项2"/>
+                                        <radio label="选项3"/>
+                                    </radiogroup>
+                                </hbox>
+                            </row>
+                        </rows>
+                    </grid>
+                </groupbox>
+
+                <groupbox style="margin-top: 10px;">
+                    <caption label="控制面板"/>
+                    <hbox>
+                        <button label="确定" oncommand="showMessage();" default="true"/>
+                        <button label="取消"/>
+                        <button label="重置" oncommand="document.getElementById('name-input').value='';"/>
+                    </hbox>
+                    
+                    <checkbox id="auto-update" label="自动更新" checked="true"/>
+                    <checkbox id="notifications" label="启用通知"/>
+                </groupbox>
+
+                <tabbox flex="1" style="margin-top: 10px;">
+                    <tabs>
+                        <tab label="基本信息"/>
+                        <tab label="高级设置"/>
+                        <tab label="日志"/>
+                    </tabs>
+                    <tabpanels>
+                        <tabpanel>
+                            <label value="这是基本信息标签页"/>
+                            <description>XUL允许创建复杂的桌面应用程序界面。</description>
+                        </tabpanel>
+                        <tabpanel>
+                            <label value="高级设置选项"/>
+                        </tabpanel>
+                        <tabpanel>
+                            <label value="应用程序日志"/>
+                            <textbox multiline="true" rows="5" readonly="true" value="日志内容将显示在这里..."/>
+                        </tabpanel>
+                    </tabpanels>
+                </tabbox>
+            </vbox>
+        </hbox>
+
+        <!-- 状态栏 -->
+        <statusbar id="main-statusbar">
+            <statusbarpanel id="status-text" label="就绪" flex="1"/>
+            <statusbarpanel id="progress-panel">
+                <progressmeter id="progress-meter" mode="determined" value="50"/>
+            </statusbarpanel>
+        </statusbar>
+    </vbox>
+
+</window>

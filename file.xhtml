@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="XHTML 1.0 Strict示例文档" />
+    <meta name="keywords" content="XHTML,示例,严格模式" />
+    <title>XHTML 1.0 Strict示例</title>
+    <style type="text/css">
+        /* XHTML要求type属性 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        h1 {
+            font-size: 24pt;
+            margin-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            padding-bottom: 5px;
+            margin: 15px 0 10px 0;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 3px;
+        }
+        .code {
+            font-family: "Courier New", monospace;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 3px;
+            margin: 10px 0;
+            overflow: auto;
+        }
+        #footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        a:link, a:visited {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>XHTML 1.0 Strict文档示例</h1>
+        <p>符合W3C XHTML 1.0 Strict标准的示例文档</p>
+    </div>
+    
+    <div id="content">
+        <h2>XHTML特点</h2>
+        <ul>
+            <li>所有标签必须小写</li>
+            <li>所有属性值必须用引号包围</li>
+            <li>所有标签必须正确关闭</li>
+            <li>所有属性必须有值</li>
+            <li>文档必须有DOCTYPE声明</li>
+        </ul>
+        
+        <div class="note">
+            <p><strong>注意：</strong>XHTML是XML的应用，因此语法比HTML更严格。</p>
+        </div>
+        
+        <h2>代码规范示例</h2>
+        <div class="code">
+&lt;p&gt;这是一个段落&lt;/p&gt;<br />
+&lt;br /&gt;  <!-- 空标签必须自关闭 --><br />
+&lt;input type="text" name="username" /&gt;<br />
+&lt;a href="http://example.com"&gt;链接&lt;/a&gt;
+        </div>
+        
+        <h2>表单示例</h2>
+        <form action="#" method="post">
+            <p>
+                <label for="name">姓名：</label><br />
+                <input type="text" id="name" name="name" />
+            </p>
+            <p>
+                <label for="email">邮箱：</label><br />
+                <input type="text" id="email" name="email" />
+            </p>
+            <p>
+                <input type="submit" value="提交" />
+                <input type="reset" value="重置" />
+            </p>
+        </form>
+        
+        <h2>表格示例</h2>
+        <table border="1" summary="示例数据表格">
+            <caption>示例数据表</caption>
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>项目</th>
+                    <th>数量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>001</td>
+                    <td>项目A</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>项目B</td>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>项目C</td>
+                    <td>8</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div id="footer">
+        <p>© 2024 XHTML示例文档 | 
+            <a href="http://validator.w3.org/">W3C验证器</a> | 
+            符合XHTML 1.0 Strict标准
+        </p>
+        <p id="timestamp">生成时间：<span>2024-01-15 14:30:00</span></p>
+    </div>
+    
+    <script type="text/javascript">
+        //<![CDATA[
+        // XHTML中JavaScript必须放在CDATA块中或使用外部文件
+        document.getElementById('timestamp').getElementsByTagName('span')[0].textContent = 
+            new Date().toLocaleString('zh-CN');
+        
+        function validateForm() {
+            var name = document.getElementById('name').value;
+            if (name === '') {
+                alert('请输入姓名');
+                return false;
+            }
+            return true;
+        }
+        //]]>
+    </script>
+</body>
+</html>

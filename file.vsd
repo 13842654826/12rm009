@@ -1,0 +1,30 @@
+Microsoft Visio Drawing (.vsd)
+This is a placeholder for a Visio diagram file.
+
+Visio is a vector graphics tool for creating diagrams, flowcharts, and schematics.
+Binary format containing shapes, connectors, layers, and metadata.
+
+FILE STRUCTURE:
+- Header with Visio signature
+- Document properties
+- Pages collection
+- Masters collection
+- Shapes data
+- Connectors data
+- Styles and formatting
+- Layer information
+
+EXAMPLE DIAGRAM DESCRIPTION:
+Page: "流程图"
+  Shape1: 开始 (椭圆形, X=100, Y=100)
+  Shape2: 处理 (矩形, X=100, Y=200)
+  Shape3: 判断 (菱形, X=100, Y=300)
+  Shape4: 结束 (椭圆形, X=100, Y=400)
+  
+Connectors:
+  Start -> Process (动态连接线)
+  Process -> Decision (动态连接线)
+  Decision -> End (条件分支)
+
+Real .vsd files require Microsoft Visio to create and edit.
+Alternative: Use .vsdx (XML-based) for modern Visio files.
