@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片外联css外联js</title>
+    <!-- 外部CSS文件链接 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 外部JavaScript文件链接  -->
+
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+<h2>1. APNG格式 (.apng)</h2>
+
+<img src="file.apng" alt="APNG动画示例" width="200">
+
+
+<h2>2. AVIF格式 (.avif)</h2>
+<img src="file.avif" alt="AVIF图片示例" width="200">
+
+<h2>3. BMP格式 (.bmp)</h2>
+<img src="file.bmp" alt="BMP图片示例" width="200">
+
+
+<h2>4. GIF格式 (.gif)</h2>
+<img src="file.gif" alt="GIF动画示例" width="200">
+
+
+<h2>5. ICO格式 (.ico)</h2>
+
+<img src="file.ico" alt="ICO图标示例" width="64">
+
+
+<h2>6. JPG格式 (.jpg/.jpeg)</h2>
+
+<img src="file.jpg" alt="JPG图片示例" width="200">
+
+
+<h2>7. PNG格式 (.png)</h2>
+
+<img src="file.png" alt="PNG图片示例" width="200">
+
+
+<h2>8. SVG格式 (.svg)</h2>
+
+<img src="file.svg" alt="SVG矢量图示例" width="200">
+
+
+<h2>9. TIFF格式 (.tif/.tiff)</h2>
+
+<img src="file.tif" alt="TIFF图片示例" width="200">
+
+
+<h2>10. WebP格式 (.webp)</h2>
+
+<img src="file.webp" alt="WebP图片示例" width="200">
+
+
+<hr>
+        <h1>欢迎来到示例网页</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>主要内容区</h2>
+            <p>这是一个演示外联CSS和JS文件的简单网页。</p>
+            
+            <div class="demo-box">
+                <h3>功能演示</h3>
+                <button id="changeColorBtn">点击改变颜色</button>
+                <button id="showMessageBtn">显示消息</button>
+                <button id="toggleContentBtn">切换内容</button>
+            </div>
+            
+            <div id="dynamicContent">
+                <p>这是初始内容，点击按钮会改变。</p>
+            </div>
+            
+            <div class="counter">
+                <h4>计数器: <span id="count">0</span></h4>
+                <button id="incrementBtn">增加</button>
+                <button id="decrementBtn">减少</button>
+                <button id="resetBtn">重置</button>
+            </div>
+        </section>
+        
+        <section id="about">
+            <h2>关于这个页面</h2>
+            <p>这个页面展示了如何将CSS和JavaScript代码分离到外部文件中。</p>
+            <ul>
+                <li>CSS文件控制样式</li>
+                <li>JavaScript文件控制交互</li>
+                <li>HTML文件专注于结构</li>
+            </ul>
+        </section>
+        
+        <section id="contact">
+            <h2>联系表单</h2>
+            <form id="contactForm">
+                <div>
+                    <label for="name">姓名:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div>
+                    <label for="email">邮箱:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div>
+                    <label for="message">留言:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                
+                <button type="submit">提交</button>
+                <button type="reset">重置</button>
+            </form>
+            
+            <div id="formMessage" class="message"></div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2024 示例网页. 所有功能由外部CSS和JS文件实现.</p>
+        <p id="currentTime">当前时间: 加载中...</p>
+    </footer>
+</body>
+</html>
